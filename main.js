@@ -11,9 +11,23 @@ class Bici {
       this.color = color;
       this.talle = talle;
       this.precio = precio;
-      this.imagen = imagen
+      this.imagen = imagen;
+      this.cantidad = 1
    }
+   //Método para sumar y restar la cantidad de productos
+
+sumarUnidad(){
+   this.cantidad = this.cantidad + 1
+   return this.cantidad
 }
+restarUnidad(){
+   this.cantidad = this.cantidad - 1
+   return this.cantidad
+}
+}
+
+
+
 // instanciación de objetos
 
 const bici1 = new Bici(1, "Specialized", "Epic Hardtail", "MTB", "blanca", "M", 5000, "specializedMtb.png")
@@ -99,6 +113,7 @@ function agregarAlCarrito(bici){
      console.log(`La bicicleta ${bici.tipo} ${bici.marca} ya existe en el carrito `)
    }
 }
+
 function cargarProductosCarrito(array){
 modalBodyCarrito.innerHTML = ``
 array.forEach((productoCarrito) => {
@@ -109,22 +124,32 @@ array.forEach((productoCarrito) => {
    <img class="card-img-top img-fluid" style="height: 200px;"src="img/${productoCarrito.imagen}" alt="bicicleta de alta gama">
    <div class="card-body">
    <h4 class="card-title"><strong>${productoCarrito.marca}</strong></h4>
-
    <p class="card-text">Modelo:<strong> ${productoCarrito.modelo}</strong></p>
    <p class="card-text">Precio U$D: <strong>${productoCarrito.precio}</strong></p>
-   <p class="card-text">SubTotal ${productoCarrito.cantidad * productoCarrito.precio}</p>
-   <button class="btn-success bg-success"  style="border-radius:15px; height:40px; id="botonSumarUnidad${productoCarrito.id}"><i class=""></i>+1</button>
-   <button class="btn-danger bg-danger" style="border-radius:15px; height:40px;"id="botonEliminarUnidad${productoCarrito.id}"><i class=""></i>+1</button>
+   <p class="card-text">Unidades: <strong>${productoCarrito.cantidad}</strong></p>
+   <p class="card-text">SubTotal: U$D ${productoCarrito.cantidad * productoCarrito.precio}</p>
+   <button class="btn-success bg-success"  style="border-radius:15px; height:40px; width:40px; id="botonSumarUnidad${productoCarrito.id}"><i class=""></i>+1</button>
+   <button class="btn-danger bg-danger" style="border-radius:15px; height:40px; width:40px;"id="botonEliminarUnidad${productoCarrito.id}"><i class=""></i>+1</button>
    <button id="eliminarBtn${productoCarrito.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-   </div>
+   </div> 
    </div>
    `
-  })
+  }) 
+ 
   //adjuntar evento eliminar
   array.forEach((productoCarrito) => {
+
+   //Evento para sumar un aunidad
+   document.getElementById(`botonSumarUnidad${productoCarrito.id}`).addEventListener("click", () => {
+      console.log(`se ha sumado un nuevo producto al carrito`)
+   })
+
+   //Evento para sumar un aunidad
+   document.getElementById(`botonEliminarUnidad${productoCarrito.id}`)
+
+   //Evento para eliminar todo el producto
    //maipular el DOM sin guardar en variable}
    document.getElementById(`eliminarBtn${productoCarrito.id}`).addEventListener("click", ()=>{
-      console.log(`Eliminar Producto funciona`)
       //borrar del DOM
       let cardProducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
       cardProducto.remove()
