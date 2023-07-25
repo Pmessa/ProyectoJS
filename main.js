@@ -83,7 +83,7 @@ function mostrarCatalogo(array) {
             icon: 'success',
             title: 'Se cargó su producto al carrito!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1000
           })
 
          agregarAlCarrito(bici)
@@ -107,7 +107,8 @@ function agregarAlCarrito(bici){
          icon: 'error',
          title: 'Oops...',
          text: 'Su producto ya está en el carrito!',
-         footer:`Usted puede modificar la cantidad de unidades en el carrito`
+         footer:`Usted puede modificar la cantidad de unidades en el carrito`,
+         timer: 1500
          })
    
      console.log(`La bicicleta ${bici.tipo} ${bici.marca} ya existe en el carrito `)
@@ -128,8 +129,8 @@ array.forEach((productoCarrito) => {
    <p class="card-text">Precio U$D: <strong>${productoCarrito.precio}</strong></p>
    <p class="card-text">Unidades: <strong>${productoCarrito.cantidad}</strong></p>
    <p class="card-text">SubTotal: U$D ${productoCarrito.cantidad * productoCarrito.precio}</p>
-   <button class="btn-success bg-success"  style="border-radius:15px; height:40px; width:40px; id="botonSumarUnidad${productoCarrito.id}"><i class=""></i>+1</button>
-   <button class="btn-danger bg-danger" style="border-radius:15px; height:40px; width:40px;"id="botonEliminarUnidad${productoCarrito.id}"><i class=""></i>+1</button>
+   <button class="btn-success bg-success"  style="border-radius:15px;border-color:white; color:white;height:46px; width:40px; "id="botonSumarUnidad${productoCarrito.id}"><i class=""></i>+1</button>
+   <button class="btn-danger bg-black" style="border-radius:15px;border-color:white;color:white; height:46px; width:40px;"id="botonEliminarUnidad${productoCarrito.id}"><i class=""></i>-1</button>
    <button id="eliminarBtn${productoCarrito.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
    </div> 
    </div>
@@ -140,12 +141,37 @@ array.forEach((productoCarrito) => {
   array.forEach((productoCarrito) => {
 
    //Evento para sumar un aunidad
-   document.getElementById(`botonSumarUnidad${productoCarrito.id}`).addEventListener("click", () => {
-      console.log(`se ha sumado un nuevo producto al carrito`)
+   document.getElementById(`botonSumarUnidad${productoCarrito.id}`).addEventListener("click", () =>{
+      productoCarrito.sumarUnidad()
+      console.log(productoCarrito.cantidad)
+      localStorage.setItem("carrito", JSON.stringify(array))
+      cargarProductosCarrito(array)
    })
 
    //Evento para sumar un aunidad
-   document.getElementById(`botonEliminarUnidad${productoCarrito.id}`)
+   document.getElementById(`botonEliminarUnidad${productoCarrito.id}`).addEventListener("click", () => {
+      console.log(`se ha restado un nuevo producto al carrito`)
+      let cantidadUnidades = productoCarrito.restarUnidad()
+      if(cantidadUnidades == 0){
+
+         let cardProducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
+         cardProducto.remove()
+        let productoEliminar = array.find((bici)=> bici.id == productoCarrito.id)
+        console.log(productoEliminar)
+        localStorage.removeItem(productoEliminar)
+        let position = array.indexOf(productoEliminar)
+        console.log(position)
+        array.splice(position, 1)
+        console.log(array)
+        localStorage.setItem("carrito",JSON.stringify(array))
+        calcularTotal(array)
+         
+      }
+      console.log(cantidadUnidades)
+      console.log(productoCarrito.cantidad)
+      localStorage.setItem("carrito", JSON.stringify(array))
+      cargarProductosCarrito(array)
+   })
 
    //Evento para eliminar todo el producto
    //maipular el DOM sin guardar en variable}
@@ -268,7 +294,7 @@ botonCarrito.addEventListener("click", () =>{
 
 function calcularTotal(array){
 
-   let total = array.reduce((acc, productoCarrito)=> acc + productoCarrito.precio , 0)
+   let total = array.reduce((acc, productoCarrito)=> acc + (productoCarrito.precio * productoCarrito.cantidad), 0)
  
    total == 0 ? precioTotal.innerHTML= `No hay productos en el carrito` : precioTotal.innerHTML = `El total es U$D:<strong>${total}</strong>`
 
