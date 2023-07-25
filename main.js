@@ -154,8 +154,8 @@ array.forEach((productoCarrito) => {
       let cantidadUnidades = productoCarrito.restarUnidad()
       if(cantidadUnidades == 0){
 
-         let cardProducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
-         cardProducto.remove()
+        let cardProducto = document.getElementById(`productoCarrito${productoCarrito.id}`)
+        cardProducto.remove()
         let productoEliminar = array.find((bici)=> bici.id == productoCarrito.id)
         console.log(productoEliminar)
         localStorage.removeItem(productoEliminar)

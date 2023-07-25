@@ -38,6 +38,14 @@ body{
         width:fit-content;
         background: rgb(193, 165, 126);
     }
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
     
   
 

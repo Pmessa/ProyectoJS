@@ -42,6 +42,14 @@ body {
   background: rgb(193, 165, 126);
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 * {
   padding: 0;
   margin: 0;
