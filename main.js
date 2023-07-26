@@ -1,4 +1,4 @@
-//Pre Entrega 3 Pablo Messa
+//Entrega final Pablo Messa
 //Esta es una página de venta de bicicletas, mi idea es escalarla y poder personalizar las bicicletas con componentes de diferentes calidades e ir mostrando al usuario el precio final.
 
 // Clase contructora
@@ -44,10 +44,15 @@ const catalogo = []
 catalogo.push(bici1, bici2, bici3, bici4, bici5, bici6, bici7, bici8)
 
 // DOM con array de objetos
-let productosEnCarrito
+let productosEnCarrito = []
 
 if(localStorage.getItem("carrito")){
-   productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
+   // productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
+   for (let bici of JSON.parse(localStorage.getItem("carrito"))){
+      let biciStorage = new Bici(bici.id, bici.marca, bici.modelo, bici.tipo, bici.color, bici.talle, bici.precio, bici.imagen)
+      productosEnCarrito.push(biciStorage)
+   }
+   console.log(productosEnCarrito)
 
 }else{
    productosEnCarrito = []
