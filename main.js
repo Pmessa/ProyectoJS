@@ -199,11 +199,11 @@ array.forEach((productoCarrito) => {
 }
 
 const DateTime = luxon.DateTime
-let fecha = document.getElementById("fecha")
-const ahora = DateTime.now()
-let fechaMostrar = ahora.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
-fecha.innerHTML = `${fechaMostrar}`
-
+setInterval(()=>{
+   let hora = document.getElementById("hora")
+   let horaMostrar = DateTime.now().toLocaleString(DateTime.TIME_24_WITH_SECONDS)
+   hora.innerHTML = `${horaMostrar}`
+})
 
 //capturo ID del boton
 let bicicletasDiv = document.getElementById("bicicletas")
@@ -216,9 +216,34 @@ let botonCarrito = document.getElementById("botonCarrito")
 let precioTotal = document.getElementById("precioTotal")
 let eliminarProductoCarrito = document.getElementById(`botonEliminar${productosEnCarrito.id}`)
 let themeBtn = document.getElementById("themeBtn")
+let finalizarCompra = document.getElementById("botonFinalizarCompra")
 
 //pasar evento:
 
+finalizarCompra.addEventListener("click", () =>{
+
+   if(productosEnCarrito.length == 0 ){
+      Swal.fire({
+                  position: 'top-end',
+                  icon: 'error',
+                  title: 'Su carrito está vacío',
+                  showConfirmButton: false,
+                  timer: 1000
+                });
+   }else
+      Swal.fire({
+               position: 'top-end',
+               icon: 'success',
+               title: 'Su compra ha sido realizada con éxito',
+               showConfirmButton: false,
+               timer: 1000
+             })       
+      })
+
+
+
+
+      
 let themeMode = localStorage.getItem("themeMode")
 localStorage.setItem("themeMode", themeMode)
 document.body.classList.add(themeMode)

@@ -7,6 +7,16 @@ body{
     justify-content: center;
     padding-top: 90px;
     }
+
+    #hora{
+        width: 100%;
+        background-color: rgb(94, 94, 94);
+        border-bottom: solid 5px rgb(0, 0, 0);
+        text-align: center;
+        font-weight: bold;
+        color: aliceblue;
+        font-size: 30px;
+    }
     #fecha{
         border-color:2px solid  rgb(154, 95, 0);
         color:rgb(54,54,54);
