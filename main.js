@@ -220,6 +220,7 @@ let finalizarCompra = document.getElementById("botonFinalizarCompra")
 
 //pasar evento:
 
+
 finalizarCompra.addEventListener("click", () =>{
 
    if(productosEnCarrito.length == 0 ){
@@ -237,9 +238,14 @@ finalizarCompra.addEventListener("click", () =>{
                title: 'Su compra ha sido realizada con éxito',
                showConfirmButton: false,
                timer: 1000
-             })       
-      })
+             }).then(()=>{
+               localStorage.removeItem(`carrito`)
+               productosEnCarrito.length = 0
 
+             })
+             
+            
+      })
 
 
 
