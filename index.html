@@ -62,17 +62,12 @@
       <div class="titulo">
         <h1>MERCADO BIKE</h1>
       </div>
+
       <!--BOTONES-->
       <div class="rowBtn">
         <div class="m-1 col-lg-2">
           <button id="themeBtn" class="btn btn-outline-dark">Theme</button>
-        </div>
-        <div class="m-1 col-lg-2">
-          <button id="verCatalogo" class="btn btn-outline-dark">Ver Catálogo</button>
-        </div>
-        <div class="m-1 col-lg-2">
-          <button id="ocultarCatalogo" class="btn btn-outline-dark">Ocultar Catálogo</button>
-        </div>
+      </div>
       </div>
       <section class="section2">
         <div class="titulo_section2">
@@ -80,7 +75,15 @@
             <h2>CATÁLOGO</h2>
           </div>
         </div>
-      </section>
+      
+          <!-- Loader-->
+    <h3 id="loaderTexto" class="text-gray text-center">Cargando Productos...</h3>
+    <div id="loader" class="d-flex justify-content-center">
+      <div class="spinner-border text-gray" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+    </div>
+  </section>
       <!-- section para cards creadas desde JS -->
       <section class="container">
         <div class="row" id="bicicletas">

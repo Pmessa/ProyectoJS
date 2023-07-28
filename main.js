@@ -207,8 +207,8 @@ setInterval(()=>{
 
 //capturo ID del boton
 let bicicletasDiv = document.getElementById("bicicletas")
-let verCatalogo = document.getElementById("verCatalogo")
-let ocultarCatalogo = document.getElementById("ocultarCatalogo")
+// let verCatalogo = document.getElementById("verCatalogo")
+// let ocultarCatalogo = document.getElementById("ocultarCatalogo")
 let ordenarMenorPrecio = document.getElementById("menMayBtn")
 let ordenarMayorPrecio = document.getElementById("mayMenBtn")
 let modalBodyCarrito = document.getElementById("modal-bodyCarrito")
@@ -217,6 +217,8 @@ let precioTotal = document.getElementById("precioTotal")
 let eliminarProductoCarrito = document.getElementById(`botonEliminar${productosEnCarrito.id}`)
 let themeBtn = document.getElementById("themeBtn")
 let finalizarCompra = document.getElementById("botonFinalizarCompra")
+let loader = document.getElementById("loader")
+let loaderTexto = document.getElementById("loaderTexto")
 
 //pasar evento:
 
@@ -314,13 +316,13 @@ ordenarMenorPrecio.addEventListener("click", () => {
    ordenarMenorMayor(catalogo)
 })
 
-verCatalogo.addEventListener("click", () => {
-   mostrarCatalogo(catalogo)
-})
+// verCatalogo.addEventListener("click", () => {
+//    mostrarCatalogo(catalogo)
+// })
 
-ocultarCatalogo.onclick = () => {
-   bicicletasDiv.innerHTML = ``
-}
+// ocultarCatalogo.onclick = () => {
+//    bicicletasDiv.innerHTML = ``
+// }
 
 
 botonCarrito.addEventListener("click", () =>{
@@ -372,7 +374,12 @@ function ordenarPorTipo(array){
    console.log("buscar por tipo funciona")
 }
 
-
+//setTimeout para imprimir carrito 
+setTimeout(()=>{
+   loaderTexto.remove()
+   loader.remove()
+   mostrarCatalogo(catalogo)
+},2000)
 
 
 
