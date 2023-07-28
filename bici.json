@@ -1,0 +1,82 @@
+[
+    {
+        "id":1,
+        "marca":"Specialized",
+        "modelo":"Epic Hardtail",
+        "tipo": "MTB", 
+        "color":"blanca",
+        "talle":"M", 
+        "precio":5000, 
+        "imagen":"specializedMtb.png"       
+    },
+    {
+        "id":2,
+        "marca":"Merida",
+        "modelo":"Big Nine 9000",
+        "tipo":"MTB", 
+        "color":"Azul",
+        "talle":"S", 
+        "precio":4850, 
+        "imagen":"meridaMtb.png"       
+    },
+    {
+        "id":3,
+        "marca":"Scott",
+        "modelo":"SCOTT SCALE RC SL",
+        "tipo":"MTB", 
+        "color":"verde",
+        "talle":"L", 
+        "precio":2600, 
+        "imagen":"scottMtb.png"       
+    },
+    {
+        "id":4,
+        "marca":"Trek",
+        "modelo":"Procaliber 9.8",
+        "tipo":"MTB", 
+        "color":"rojo",
+        "talle":"M", 
+        "precio":3600, 
+        "imagen":"trekMtb.png"      
+    },
+    {
+        "id":5,
+        "marca":"Specialized",
+        "modelo":"Tarmac SL7 Pro",
+        "tipo":"Ruta", 
+        "color":"Gris",
+        "talle":"52", 
+        "precio":4450, 
+        "imagen":"specializedRuta.png"     
+    },
+    {
+        "id":6,
+        "marca":"Merida",
+        "modelo":"SCULTURA ENDURANCE",
+        "tipo":"Ruta", 
+        "color":"rojo",
+        "talle":"54", 
+        "precio":3850, 
+        "imagen":"meridaRuta.png"     
+    },
+    {
+        "id":7,
+        "marca":"Scott",
+        "modelo":"ADDICT RC 30",
+        "tipo":"Ruta", 
+        "color":"gris",
+        "talle":"56", 
+        "precio":2900, 
+        "imagen":"scottRuta.png"      
+    },
+    {
+        "id":8,
+        "marca":"Pinarello",
+        "modelo":"DOGMA F",
+        "tipo":"Ruta", 
+        "color":"rojo",
+        "talle":"54", 
+        "precio":3900, 
+        "imagen":"pinarelloRuta.png"      
+    }
+]
